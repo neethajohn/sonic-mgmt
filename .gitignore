@@ -3,7 +3,7 @@
 __pycache__/
 .pytest_cache/
 tests/logs
-ansible/plugins/filter/*.pyc
+ansible/plugins/*/*.pyc
 
 # Credential files
 ansible/group_vars/all/secrets.json
