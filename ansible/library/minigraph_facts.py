@@ -565,7 +565,7 @@ def parse_xml(filename, hostname):
     elif hwsku == "newport":
         for i in range(0, 256, 8):
             port_alias_to_name_map["Ethernet%d" % i] = "Ethernet%d" % i
-    elif hwsku == "Nexus-3132-Q32":
+    elif hwsku in ["Nexus-3132-GE-Q32", "Nexus-3132-GX-Q32"]:
         for i in range(1, 33):
             port_alias_to_name_map["Ethernet1/%d" % i] = "Ethernet%d" % ((i - 1) * 4)
     elif hwsku == "Celestica-DX010-C32":
