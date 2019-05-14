@@ -486,7 +486,7 @@ def parse_xml(filename, hostname):
             port_alias_to_name_map["Ethernet%d/1" % i] = "Ethernet%d" % ((i - 5) * 4)
         for i in range(29, 37):
             port_alias_to_name_map["Ethernet%d" % i] = "Ethernet%d" % ((i - 5) * 4)
-    elif hwsku == "Arista-7260CX3-C64" or hwsku == "Arista-7170-64C":
+    elif hwsku in ["Arista-7260CX3-C64", "Arista-7170-64C", "Arista-7260CX3-Q64"]:
         for i in range(1, 65):
             port_alias_to_name_map["Ethernet%d/1" % i] = "Ethernet%d" % ((i - 1) * 4)
     elif hwsku == "Arista-7060CX-32S-C32" or hwsku == "Arista-7060CX-32S-Q32" or hwsku == "Arista-7060CX-32S-C32-T1" or hwsku == "Arista-7170-32CD-C32":
