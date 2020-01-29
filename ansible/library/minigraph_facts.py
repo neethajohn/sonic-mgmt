@@ -508,6 +508,9 @@ def parse_xml(filename, hostname):
     elif hwsku == "Mellanox-SN2700" or hwsku == "ACS-MSN2700":
         for i in range(1, 33):
             port_alias_to_name_map["etp%d" % i] = "Ethernet%d" % ((i - 1) * 4)
+    elif hwsku == "ACS-MSN3800":
+        for i in range(1, 65):
+            port_alias_to_name_map["etp%d" % i] = "Ethernet%d" % ((i - 1) * 4)
     elif hwsku == "Arista-7060CX-32S-D48C8":
         # All possible breakout 50G port numbers:
         all_ports = [ x for x in range(1, 33)]
