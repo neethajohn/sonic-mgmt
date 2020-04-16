@@ -1,11 +1,11 @@
 # Pytest organization proposal
 
 This proposal intends to achieve the following
-  - standard way of categorizing tests
-  - have some guidelines around test file organization
+  - Have a standard way of categorizing tests
+  - Have some guidelines around test file organization
   - Complicated test sequences can be written as single standalone scripts
-  - have a master wrapper for test execution
-  - follow common doc style
+  - Have a master wrapper for test execution
+  - Follow common documentation style
   - Test result organization
 
 ## Test categorization
@@ -110,5 +110,5 @@ Follow a common style of documentation for test methods which can be used by som
 
 
 ## Test result organization
-Use the --junit-xml attribute to collect test results. Can leverage the existing format used in sonic-utilities/sonic-swss repo for reporting test results.
+Use the --junitxml attribute to collect test results. Can leverage the existing format used in sonic-utilities/sonic-swss repo for reporting test results.
 
