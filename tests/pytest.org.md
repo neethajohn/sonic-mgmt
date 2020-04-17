@@ -6,7 +6,7 @@ This proposal intends to achieve the following
   - Complicated test sequences can be written as single standalone scripts
   - Have a master wrapper for test execution
   - Follow common documentation style
-  - Test result organization
+  - Test result collection
 
 ## Test categorization
 Leverage pytest markers to group tests based on topology, platform and features. Test cases for particular feature can be invoked using '-m featurename' command line option. For platform specific tests and topology groups, we intend to follow the pattern outlined below
@@ -109,6 +109,6 @@ Make it easier to run a nightly test against a feature/platform/topology from th
 Follow a common style of documentation for test methods which can be used by some tool to generate html content
 
 
-## Test result organization
+## Test result collection
 Use the --junitxml attribute to collect test results. Can leverage the existing format used in sonic-utilities/sonic-swss repo for reporting test results.
 
