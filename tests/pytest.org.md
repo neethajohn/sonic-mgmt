@@ -89,18 +89,24 @@ SKIPPED [1] /var/nejo/Networking-acs-sonic-mgmt/tests/conftest.py:295: test does
 ```
 
 ## Test file organization
-- Feature specific tests and their helpers go into specific feature folders
+- Have 2 broad categories (platform and feature). Feature specific tests and their helpers go into specific feature folders. 
+
+```
+tests
+  |_ common
+  |_ platform
+  |_ nat
+      |_ test_nat_bindings.py
+      |_ files
+           |_ all helpers for the nat feature
+  |_ acl
+     
+```
   
 - Any reusable code needs to go under tests/common
 
 - File naming convention
 
-- Have a single copy of file and symlink the new one(eg. files under ptftests/)
-
-
-## Complicated test sequences
-
-Currently nightly tests make use of Jenkins templates to piece together individual test scripts to test various flows like upgrade path (upgrading from a set of image versions to another and performing basic sanity after each upgrade). Have a single standalone script for these tasks to enable sharing with community and better test result organization.
 
 ## Master wrapper
 Make it easier to run a nightly test against a feature/platform/topology from the command line. Have something similar to the 'ansible/testbed-cli.sh' script which can be invoked with just the basic parameters (dut name, testbed name, what flavor of test to run)
