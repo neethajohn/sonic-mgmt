@@ -3,22 +3,21 @@
 This proposal intends to achieve the following
   - Have a standard way of categorizing tests
   - Have some guidelines around test file organization
-  - Complicated test sequences can be written as single standalone scripts
   - Have a master wrapper for test execution
   - Follow common documentation style
   - Test result collection
 
 ## Test categorization
-Leverage pytest markers to group tests based on topology, platform and features. Test cases for particular feature can be invoked using '-m featurename' command line option. For platform specific tests and topology groups, we intend to follow the pattern outlined below
+Leverage pytest markers to group tests based on topology, platform, features and testbed_type. 
 
 ```
 pytest.ini
 [pytest]
 markers:
-    topology(topo_name): The topologies this particular testcase can run against. topo_name can be individual topology names like 't0', 't1', 'ptf', 'any' or a comma separated like ('t0', 't1') if supported on multiple topologies
+    topology(topo_name): The topologies this particular testcase can run against. topo_name can be individual topology names like 't0', 't1', 'ptf', or a comma separated like ('t0', 't1') if supported on multiple topologies
     platform(platform_name): used for platform specific test(broadcom, mellanox, vs etc)
-    acl: ACL tests
-    nat: NAT tests
+    feature(feature_name): feature this test is written for. eg. acl, nat
+    testbed_type(name): names can be 'fabric' (which indicates the presence of a fanout switch) or 'direct' if a testcase uses directly connected links
 
 ```
 conftest.py
