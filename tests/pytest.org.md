@@ -96,6 +96,8 @@ SKIPPED [1] /var/nejo/Networking-acs-sonic-mgmt/tests/conftest.py:295: test does
 
 - File naming convention
 
+- Have a single copy of file and symlink the new one(eg. files under ptftests/)
+
 
 ## Complicated test sequences
 
