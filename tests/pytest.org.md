@@ -8,13 +8,13 @@ This proposal intends to achieve the following
   - Test result collection
 
 ## Test categorization
-Leverage pytest markers to group tests based on topology, platform, features and testbed_type. 
+Leverage pytest custom markers to group tests based on topology, platform, features and testbed_type. 
 
 ```
 pytest.ini
 [pytest]
 markers:
-    topology(topo_name): The topologies this particular testcase can run against. topo_name can be individual topology names like 't0', 't1', 'ptf', or a comma separated like ('t0', 't1') if supported on multiple topologies
+    topology(topo_name): The topologies this particular testcase can run against. topo_name can be individual topology names like 't0', 't1', 'ptf', 'any' or a comma separated like ('t0', 't1') if supported on multiple topologies
     platform(platform_name): used for platform specific test(broadcom, mellanox, vs etc)
     feature(feature_name): feature this test is written for. eg. acl, nat
     testbed_type(name): names can be 'fabric' (which indicates the presence of a fanout switch) or 'direct' if a testcase uses directly connected links
@@ -30,7 +30,8 @@ def pytest_addoption(parser):
 def pytest_runtest_setup(item):
     toponames = [mark.args for mark in item.iter_markers(name="topology")]
     if toponames:
-        if item.config.getoption("--topology") not in toponames[0]:
+        cfg_topos = item.config.getoption("--topology").split(',')
+        if all(topo not in toponames[0] for topo in cfg_topos):
             pytest.skip("test requires topology in {!r}".format(toponames))
     else:
         if item.config.getoption("--topology"):
@@ -95,6 +96,7 @@ SKIPPED [1] /var/nejo/Networking-acs-sonic-mgmt/tests/conftest.py:295: test does
 tests
   |_ common
   |_ platform
+  |_ ptftests
   |_ nat
       |_ test_nat_bindings.py
       |_ files
