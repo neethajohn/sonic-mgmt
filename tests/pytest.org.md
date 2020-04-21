@@ -8,7 +8,7 @@ This proposal intends to achieve the following
   - Test result collection
 
 ## Test categorization
-Leverage pytest custom markers to group tests based on topology, platform, features and testbed_type. 
+Leverage pytest custom markers to group tests based on topology, platform, features and connection type. 
 
 ```
 pytest.ini
@@ -17,7 +17,7 @@ markers:
     topology(topo_name): The topologies this particular testcase can run against. topo_name can be individual topology names like 't0', 't1', 'ptf', 'any' or a comma separated like ('t0', 't1') if supported on multiple topologies
     platform(platform_name): used for platform specific test(broadcom, mellanox, vs etc)
     feature(feature_name): feature this test is written for. eg. acl, nat
-    testbed_type(name): names can be 'fabric' (which indicates the presence of a fanout switch) or 'direct' if a testcase uses directly connected links
+    connection_type(name): names can be 'fabric' (which indicates the presence of a fanout switch) or 'direct' if a testcase uses directly connected links
 
 ```
 conftest.py
@@ -111,7 +111,7 @@ tests
 
 
 ## Master wrapper
-Make it easier to run a nightly test against a feature/platform/topology from the command line. Have something similar to the 'ansible/testbed-cli.sh' script which can be invoked with just the basic parameters (dut name, testbed name, what flavor of test to run)
+Make it easier to run a nightly test against a feature/platform/topology from the command line. Have something similar to the 'ansible/testbed-cli.sh' script which can be invoked with just the basic parameters (testbed name, what flavor of test to run)
 
 
 ## Documentation style 
