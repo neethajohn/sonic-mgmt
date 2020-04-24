@@ -505,7 +505,7 @@ def parse_xml(filename, hostname):
         for i in s100G_ports:
             alias = "etp%d" % (i / 4 + 1)
             port_alias_to_name_map[alias] = "Ethernet%d" % i
-        elif hwsku == "Mellanox-SN3800-D112C8":
+    elif hwsku == "Mellanox-SN3800-D112C8":
         x_ports = [x for x in range(0, 13, 2)] + [x for x in range(16, 29, 2)] + [x for x in range(32, 45, 2)] + [x for x in range(48, 61, 2)] + [x for x in range(64, 77, 2)] + [x for x in range(80, 91, 2)]
 
         ctr = 1
