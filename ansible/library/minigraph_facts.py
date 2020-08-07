@@ -473,7 +473,7 @@ def parse_xml(filename, hostname):
         for i in range(0, 4):
             for j in range(0, 16):
                 port_alias_to_name_map["fortyGigE1/%d/%d" % (i+1, j+1)] = "Ethernet%d" % (i * 16 + j)
-    elif hwsku == "Force10-Z9100-C32":
+    elif hwsku in ["Force10-Z9100-C32", "DellEMC-S5232f-C32"]:
         for i in range(0, 128, 4):
             port_alias_to_name_map["hundredGigE1/%d" % (i/4 + 1)] = "Ethernet%d" % i
     elif hwsku == "Arista-7050-QX32":
