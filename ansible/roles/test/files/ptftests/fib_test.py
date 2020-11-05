@@ -137,7 +137,9 @@ class FibTest(BaseTest):
             if self.test_params['testbed_type'] == 't0-116':
                 self.src_ports = range(0, 120)
             if self.test_params['testbed_type'] == 't0-120':
-                self.src_ports = range(0, 120).remove([7, 15, 23, 31, 39, 47, 53, 59, 65, 71, 77, 79, 81, 83, 87, 88, 91, 95, 96, 98, 102, 103, 111, 119])
+                down_ports = [7, 15, 23, 31, 39, 47, 53, 59, 65, 71, 77, 79, 81, 83, 87, 88, 91, 95, 96, 98, 102, 103, 111, 119]
+                all_ports = range(0, 120)
+                self.src_ports = [i for i in all_ports if i not in down_ports]
     #---------------------------------------------------------------------
 
     def check_required_params(self):
