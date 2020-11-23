@@ -152,8 +152,8 @@ def test_collect_testbed_prio(duthosts, tbinfo):
 
 def test_connect_to_internal_nameserver(duthosts, enum_dut_hostname):
     cmds = [
-        "echo \"nameserver 10.64.5.5\" > /etc/resolv.conf",
-        "sudo systemctl restart systemd-resolved"
+        "echo nameserver 10.64.5.5 > /etc/resolv.conf",
+        "systemctl restart systemd-resolved"
     ]
 
     duthost = duthosts[enum_dut_hostname]
